@@ -46,6 +46,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+import com.vuforia.CameraDevice;
 
 /**
  * This OpMode illustrates the basics of using the Vuforia engine to determine
@@ -132,6 +133,7 @@ public class VuforiaTest extends LinearOpMode {
         relicTrackables.activate();
 
         while (opModeIsActive()) {
+            CameraDevice.getInstance().setFlashTorchMode(true);
             robot.init(hardwareMap);
             robot.led.setPower(1.0);
             /**
@@ -181,5 +183,8 @@ public class VuforiaTest extends LinearOpMode {
 
     String format(OpenGLMatrix transformationMatrix) {
         return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
+    }
+    {
+        CameraDevice.getInstance().setFlashTorchMode(false);
     }
 }
